@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Customer Churn Prediction</h1>
+        <form action="/predict" method="post">
+            <!-- Example input fields, add all the necessary fields similarly -->
+            <div>
+                <label for="tenure">Tenure:</label>
+                <input type="text" id="tenure" name="tenure" required>
+            </div>
+            
+            <div>
+                <label for="warehouseToHome">Warehouse to Home:</label>
+                <input type="text" id="warehouseToHome" name="warehouseToHome" required>
+            </div>
+            <div>
+                <label for="hourSpendOnApp">Hour Spend on App:</label>
+                <input type="text" id="hourSpendOnApp" name="hourSpendOnApp" required>
+            </div>
+            <div>
+                <label for="numberOfDeviceRegistered">Number of Devices Registered:</label>
+                <input type="text" id="numberOfDeviceRegistered" name="numberOfDeviceRegistered" required>
+            </div>
+            
+            <div>
+                <label for="numberOfAddress">Number of Addresses:</label>
+                <input type="text" id="numberOfAddress" name="numberOfAddress" required>
+            </div>
+            <div>
+                <label for="orderAmountHikeFromlastYear">Order Amount Hike From Last Year:</label>
+                <input type="text" id="orderAmountHikeFromlastYear" name="orderAmountHikeFromlastYear" required>
+            </div>
+            <div>
+                <label for="couponUsed">Coupons Used:</label>
+                <input type="text" id="couponUsed" name="couponUsed" required>
+            </div>
+            <div>
+                <label for="orderCount">Order Count:</label>
+                <input type="text" id="orderCount" name="orderCount" required>
+            </div>
+            <div>
+                <label for="daySinceLastOrder">Days Since Last Order:</label>
+                <input type="text" id="daySinceLastOrder" name="daySinceLastOrder" required>
+            </div>
+            <div>
+                <label for="cashbackAmount">Cashback Amount:</label>
+                <input type="text" id="cashbackAmount" name="cashbackAmount" required>
+            </div>
+            <div>
+                <label for="cityTier">City Tier:</label>
+                <select id="cityTier" name="cityTier">
+                    <option value="1">City Tier 1</option>
+                    <option value="2">City Tier 2</option>
+                    <option value="3">City Tier 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+            </div>
+            <div>
+                <label for="preferredLoginDevice">Preferred Login Device:</label>
+                <select id="preferredLoginDevice" name="preferredLoginDevice" required>
+                    <option value="Handphone">Handphone</option>
+                    <option value="Computer">Computer</option>
+                </select>
+            </div>
+            <div>
+                <label for="preferredPaymentMode">Preferred Payment Mode:</label>
+                <select id="preferredPaymentMode" name="preferredPaymentMode" required>
+                    <option value="Cash on Delivery">Cash on Delivery</option>
+                    <option value="E Wallet">E Wallet</option>
+                </select>
+            </div>
+            <div>
+                <label for="preferedOrderCat">Preferred Order Category:</label>
+                <select id="preferedOrderCat" name="preferedOrderCat" required>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Grocery">Grocery</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div>
+                <label for="maritalStatus">Marital Status:</label>
+                <select id="maritalStatus" name="maritalStatus" required>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                </select>
+            </div>
+            <div>
+                <label for="satisfactionScore">Satisfaction Score:</label>
+                <select id="satisfactionScore" name="satisfactionScore">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+            </div>
+            <div>
+                <label for="complain">Complain:</label>
+                <select id="complain" name="complain">
+                    <option value="0">No Complaints</option>
+                    <option value="1">Has Complaints</option>
+                </select>
+            </div>
+            <button type="submit" align="center">Predict</button>
+        </form>
+        {% if prediction %}
+        <div id="predictionResult" class="{% if prediction == 'This Customer Will Churn' %}prediction-churn{% else %}prediction-no-churn{% endif %}">
+            <h2>Prediction Result: {{ prediction }}</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
